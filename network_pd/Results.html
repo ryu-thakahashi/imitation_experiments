@@ -1,9 +1,17 @@
 {{ block title }}
-    Page title
+    結果
 {{ endblock }}
 
 {{ block content }}
-
+    <h3>近傍の行動{% if show_payoff %}と利得{% endif %}</h3>
+    <ul>
+    {% for n in neighbors %}
+        <li>
+            プレイヤー {{ n.id_in_group }} : 行動 {{ n.choice }}
+            {% if show_payoff %} ({{ n.payoff }}){% endif %}
+        </li>
+    {% endfor %}
+    </ul>
     {{ next_button }}
 {{ endblock }}
 
